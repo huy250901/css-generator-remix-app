@@ -1,0 +1,63 @@
+.Polaris-RangeSlider-SingleThumb {
+  margin: 10px 0;
+}
+
+.box-preview {
+  width: 200px;
+  height: 200px;
+}
+
+.Polaris-Choice {
+  margin: 16px 0;
+}
+
+.Polaris-LegacyCard {
+  position: relative;
+}
+
+.preview_color {
+  position: absolute;
+  top: 18px;
+  display: flex;
+  right: 20px;
+  gap: 10px;
+}
+
+.color {
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.Polaris-LegacyStack {
+  display: block;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+.colorPicker {
+  margin: 20px 0;
+}
+
+.btn_addlayer {
+  margin: 20px 0;
+}
+
+.container_box_template {
+  display: flex;
+  gap: 20px;
+}
+
+.box-template {
+  width: 50px;
+  background-color: #00e497;
+  height: 50px;
+}
+
+.box-template2 {
+  width: 50px;
+  background-color: #f30051;
+  height: 50px;
+}

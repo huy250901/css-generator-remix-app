@@ -1,0 +1,40 @@
+.add_layer {
+  display: flex;
+  gap: 20px;
+  padding: 0 10px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.layer {
+  margin: 10px 0;
+}
+
+.layer:last-child {
+  margin-bottom: 0;
+}
+
+.layer-current {
+  display: flex;
+  gap: 12px;
+}
+
+.active {
+  background-color: #6b86ff;
+  border-radius: 4px;
+  color: #fff;
+  fill: #fff;
+}
+
+.Polaris-Icon__Svg,
+.Polaris-Icon__Img {
+  /* fill: #fff; */
+}
+
+.no-active {
+  background-color: rgb(231, 225, 225);
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+}
