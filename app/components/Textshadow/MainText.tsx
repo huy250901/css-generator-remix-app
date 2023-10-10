@@ -10,9 +10,10 @@ import {
 } from "@shopify/polaris";
 import tinycolor from "tinycolor2";
 
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import mainbox from "./../Boxshadow/mainbox.css";
-import { ITextShadowProperty, initialTextshadow } from "~/types/type";
+import type { ITextShadowProperty } from "~/types/type";
+import { initialTextshadow } from "~/types/type";
 import ListItem, { links as listitem } from "../ListItem/ListItem";
 
 const Maintext = () => {
@@ -46,6 +47,7 @@ const Maintext = () => {
     } else {
       setEditData(data[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editData]);
 
   const updateShadow = (prop: string, val: any) => {

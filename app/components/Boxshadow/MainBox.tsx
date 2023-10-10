@@ -11,9 +11,10 @@ import {
 } from "@shopify/polaris";
 import tinycolor from "tinycolor2";
 
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import mainbox from "./mainbox.css";
-import { IBoxShadowProperty, initialBoxShadow } from "~/types/type";
+import type { IBoxShadowProperty } from "~/types/type";
+import { initialBoxShadow } from "~/types/type";
 import ListItem, { links as listitem } from "../ListItem/ListItem";
 
 const MainBox = () => {
@@ -35,7 +36,7 @@ const MainBox = () => {
 
   useEffect(() => {
     if (editData) {
-      setFormData((prevFormData: any) => ({
+      setFormData((prevFormData: object) => ({
         ...prevFormData,
         shiftRight: editData.shiftRight,
         shiftDown: editData.shiftDown,
@@ -49,6 +50,7 @@ const MainBox = () => {
     } else {
       setEditData(data[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editData]);
 
   const updateShadow = (prop: string, val: any) => {
@@ -72,6 +74,12 @@ const MainBox = () => {
         }
       );
       setData(updatedData);
+      const updatedEditData: IBoxShadowProperty | undefined = updatedData.find(
+        (item) => item.id === editData.id
+      );
+      if (updatedEditData) {
+        setEditData(updatedEditData);
+      }
     }
   };
 
@@ -90,7 +98,7 @@ const MainBox = () => {
         console.log("RGBA Color:", rgbaColor); // Log giá trị màu RGBA
 
         const insetString = inset
-          ? `inset (${shiftRight})px ${shiftDown}px ${spread}px ${blur}px  `
+          ? `inset ${shiftRight}px ${shiftDown}px ${spread}px ${blur}px  `
           : `${shiftRight}px ${shiftDown}px ${spread}px ${blur}px `;
 
         return ` ${insetString} ${rgbaColor} `;

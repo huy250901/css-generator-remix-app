@@ -5,16 +5,25 @@ import {
   DeleteMinor,
 } from "@shopify/polaris-icons";
 import { Icon } from "@shopify/polaris";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import listitem from "./listitem.css";
-import { IShadow, IShadow2 } from "~/types/type";
+import type { IShadow2 } from "~/types/type";
+
+// interface ListItemProps {
+//   shadow: IShadow2;
+//   formData: IShadow2;
+//   setEditData: (item: IShadow[]) => void;
+//   data: IShadow[];
+//   setData: (data: IShadow[]) => void;
+//   type: string;
+// }
 
 interface ListItemProps {
   shadow: IShadow2;
   formData: IShadow2;
-  setEditData: (item: IShadow[]) => void;
-  data: IShadow[];
-  setData: (data: IShadow[]) => void;
+  setEditData: (item: IShadow2 | undefined) => void; // Đã thay đổi kiểu ở đây
+  data: IShadow2[]; // Đã thay đổi kiểu ở đây
+  setData: (data: IShadow2[] | ((prevData: IShadow2[]) => IShadow2[])) => void; // Đã thay đổi kiểu ở đây
   type: string;
 }
 
@@ -48,7 +57,7 @@ const ListItem = ({
     return color;
   };
 
-  const colorValue = replaceColorIfObject(displayProperties?.color);
+  const colorValue = replaceColorIfObject(displayProperties?.color as string);
 
   return (
     <div

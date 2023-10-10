@@ -21,26 +21,29 @@ export interface IShadow {
   inset?: boolean;
 }
 
+// export interface IShadow2 {
+//   id: number;
+//   shiftRight: number;
+//   shiftDown: number;
+//   spread: number;
+//   blur: number;
+//   opacity: number;
+//   color: string | object;
+//   // color: object | string;
+//   inset?: boolean;
+// }
+
 export interface IShadow2 {
   id: number;
   shiftRight: number;
   shiftDown: number;
-  spread?: number;
+  spread: number;
   blur: number;
   opacity: number;
   color: string;
   // color: object | string;
   inset?: boolean;
 }
-
-// export interface IFormData {
-//   id: number;
-//   shiftRight: number;
-//   shiftDown: number;
-//   spread: number;
-//   blur: number;
-//   color: string;
-// }
 
 export const initialBoxShadow: IBoxShadowProperty[] = [
   {
@@ -51,11 +54,6 @@ export const initialBoxShadow: IBoxShadowProperty[] = [
     blur: 7,
     opacity: 50,
     color: "#000000",
-    // color: {
-    //   hue: 120,
-    //   brightness: 0,
-    //   saturation: 1,
-    // },
     inset: false,
   },
 ];
