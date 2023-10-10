@@ -12,14 +12,14 @@ import tinycolor from "tinycolor2";
 
 import { LinksFunction } from "@remix-run/node";
 import mainbox from "./../Boxshadow/mainbox.css";
-import { TextShadowProperty, initialTextshadow } from "~/types/type";
+import { ITextShadowProperty, initialTextshadow } from "~/types/type";
 import ListItem, { links as listitem } from "../ListItem/ListItem";
 
 const Maintext = () => {
   const [data, setData] = useState(initialTextshadow);
   const [selectedColor, setSelectedColor] = useState("#e2e2e2");
   const [selectedColorChildren, setSelectedColorChildren] = useState("#ff6666");
-  const [shadows, setShadows] = useState<any>([]);
+  const [shadows, setShadows] = useState<string>("");
   const [editData, setEditData] = useState<any>();
   const [formData, setFormData] = useState(data[0]);
   const [count, setCount] = useState(data.length);
@@ -34,7 +34,7 @@ const Maintext = () => {
 
   useEffect(() => {
     if (editData) {
-      setFormData((prevFormData: any) => ({
+      setFormData((prevFormData: object) => ({
         ...prevFormData,
         shiftRight: editData.shiftRight,
         shiftDown: editData.shiftDown,
@@ -61,7 +61,7 @@ const Maintext = () => {
     if (editData) {
       const updatedData = data.map((item: any) => {
         if (item.id === editData.id) {
-          return { ...item, ...formData };
+          return { ...item, [prop]: val };
         }
         return item;
       });
@@ -94,7 +94,7 @@ const Maintext = () => {
   }, [data, formData]);
 
   const addShadow = () => {
-    const newData: TextShadowProperty = {
+    const newData: ITextShadowProperty = {
       id: count,
       shiftRight: 0,
       shiftDown: 0,

@@ -1,41 +1,75 @@
-export interface BoxShadowProperty {
-  id: any;
+export interface IBoxShadowProperty {
+  id: number;
   shiftRight: number;
   shiftDown: number;
   spread: number;
   blur: number;
-  color: any;
+  color: string;
   opacity: number;
-  inset: boolean;
+  inset?: boolean;
 }
 
-export const initialBoxShadow: BoxShadowProperty[] = [
+export interface IShadow {
+  id: number;
+  shiftRight: number;
+  shiftDown: number;
+  spread?: number;
+  blur: number;
+  opacity: number;
+  // color: string;
+  color: object | string;
+  inset?: boolean;
+}
+
+export interface IShadow2 {
+  id: number;
+  shiftRight: number;
+  shiftDown: number;
+  spread?: number;
+  blur: number;
+  opacity: number;
+  color: string;
+  // color: object | string;
+  inset?: boolean;
+}
+
+// export interface IFormData {
+//   id: number;
+//   shiftRight: number;
+//   shiftDown: number;
+//   spread: number;
+//   blur: number;
+//   color: string;
+// }
+
+export const initialBoxShadow: IBoxShadowProperty[] = [
   {
+    id: 0,
     shiftRight: 0,
     shiftDown: 19,
     spread: 3,
     blur: 7,
-    opacity: 0,
-    color: {
-      hue: 120,
-      brightness: 0,
-      saturation: 1,
-    },
+    opacity: 50,
+    color: "#000000",
+    // color: {
+    //   hue: 120,
+    //   brightness: 0,
+    //   saturation: 1,
+    // },
     inset: false,
-    id: 0,
   },
 ];
 
-export interface TextShadowProperty {
-  id: any;
+export interface ITextShadowProperty {
+  id: number;
   shiftRight: number;
   shiftDown: number;
   blur: number;
   opacity: number;
-  color: any;
+  color: object | string;
 }
 
-export const initialTextshadow: TextShadowProperty[] = [
+export const initialTextshadow: ITextShadowProperty[] = [
   {
     id: 0,
     shiftRight: 0,

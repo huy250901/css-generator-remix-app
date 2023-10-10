@@ -7,6 +7,16 @@ import {
 import { Icon } from "@shopify/polaris";
 import { LinksFunction } from "@remix-run/node";
 import listitem from "./listitem.css";
+import { IShadow, IShadow2 } from "~/types/type";
+
+interface ListItemProps {
+  shadow: IShadow2;
+  formData: IShadow2;
+  setEditData: (item: IShadow[]) => void;
+  data: IShadow[];
+  setData: (data: IShadow[]) => void;
+  type: string;
+}
 
 const ListItem = ({
   shadow,
@@ -15,7 +25,7 @@ const ListItem = ({
   data,
   setData,
   type,
-}: any) => {
+}: ListItemProps) => {
   const handleEditClick = (item: any) => {
     setEditData(item);
   };

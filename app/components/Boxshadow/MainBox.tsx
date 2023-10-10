@@ -13,14 +13,14 @@ import tinycolor from "tinycolor2";
 
 import { LinksFunction } from "@remix-run/node";
 import mainbox from "./mainbox.css";
-import { BoxShadowProperty, initialBoxShadow } from "~/types/type";
+import { IBoxShadowProperty, initialBoxShadow } from "~/types/type";
 import ListItem, { links as listitem } from "../ListItem/ListItem";
 
 const MainBox = () => {
   const [data, setData] = useState(initialBoxShadow);
   const [selectedColor, setSelectedColor] = useState("#e2e2e2");
   const [selectedColorChildren, setSelectedColorChildren] = useState("#ff6666");
-  const [shadows, setShadows] = useState<any>([]);
+  const [shadows, setShadows] = useState<string>("");
   const [editData, setEditData] = useState<any>();
   const [formData, setFormData] = useState(data[0]);
   const [count, setCount] = useState(data.length);
@@ -60,14 +60,17 @@ const MainBox = () => {
     }
 
     setFormData({ ...formData, [prop]: val });
+
     console.log("🚀 ~ file: Box.tsx:29 ~ updateShadow ~ val:", val);
     if (editData) {
-      const updatedData = data.map((item: any) => {
-        if (item.id === editData.id) {
-          return { ...item, ...formData };
+      const updatedData: IBoxShadowProperty[] = data.map(
+        (item: IBoxShadowProperty) => {
+          if (item.id === editData.id) {
+            return { ...item, [prop]: val };
+          }
+          return item;
         }
-        return item;
-      });
+      );
       setData(updatedData);
     }
   };
@@ -87,7 +90,7 @@ const MainBox = () => {
         console.log("RGBA Color:", rgbaColor); // Log giá trị màu RGBA
 
         const insetString = inset
-          ? `inset ${shiftRight}px ${shiftDown}px ${spread}px ${blur}px  `
+          ? `inset (${shiftRight})px ${shiftDown}px ${spread}px ${blur}px  `
           : `${shiftRight}px ${shiftDown}px ${spread}px ${blur}px `;
 
         return ` ${insetString} ${rgbaColor} `;
@@ -100,7 +103,7 @@ const MainBox = () => {
   }, [data, formData]);
 
   const addShadow = () => {
-    const newData: BoxShadowProperty = {
+    const newData: IBoxShadowProperty = {
       id: count,
       shiftRight: 0,
       shiftDown: 0,
